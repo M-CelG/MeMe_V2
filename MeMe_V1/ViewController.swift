@@ -15,6 +15,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    var memes: [Meme]!{
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
     
     //Dictionary for NSAttributedString to setup attributes of Text Fields
     let memeTextAttributes = [

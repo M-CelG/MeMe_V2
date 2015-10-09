@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0D12A31BC81ABE0001B488 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D12A21BC81ABE0001B488 /* TableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		BD0D12A51BC81F630001B488 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D12A41BC81F630001B488 /* CollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		BD0D12A71BC821F80001B488 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D12A61BC821F80001B488 /* CollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		BD0D12A91BC82A480001B488 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D12A81BC82A480001B488 /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		BD99F8981B9F4E650003B36F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD99F8971B9F4E650003B36F /* AppDelegate.swift */; };
 		BD99F89A1B9F4E650003B36F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD99F8991B9F4E650003B36F /* ViewController.swift */; };
 		BD99F89D1B9F4E650003B36F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD99F89B1B9F4E650003B36F /* Main.storyboard */; };
@@ -27,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD0D12A21BC81ABE0001B488 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		BD0D12A41BC81F630001B488 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		BD0D12A61BC821F80001B488 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		BD0D12A81BC82A480001B488 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BD99F8921B9F4E650003B36F /* MeMe_V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeMe_V2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD99F8961B9F4E650003B36F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD99F8971B9F4E650003B36F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +94,10 @@
 				BD99F8A01B9F4E650003B36F /* LaunchScreen.xib */,
 				BD99F8951B9F4E650003B36F /* Supporting Files */,
 				BD9FC5C71BACCBDE0052B185 /* meme.swift */,
+				BD0D12A21BC81ABE0001B488 /* TableViewController.swift */,
+				BD0D12A41BC81F630001B488 /* CollectionViewController.swift */,
+				BD0D12A61BC821F80001B488 /* CollectionViewCell.swift */,
+				BD0D12A81BC82A480001B488 /* DetailViewController.swift */,
 			);
 			path = MeMe_V1;
 			sourceTree = "<group>";
@@ -218,7 +230,11 @@
 			files = (
 				BD99F89A1B9F4E650003B36F /* ViewController.swift in Sources */,
 				BD99F8981B9F4E650003B36F /* AppDelegate.swift in Sources */,
+				BD0D12A71BC821F80001B488 /* CollectionViewCell.swift in Sources */,
 				BD9FC5C81BACCBDE0052B185 /* meme.swift in Sources */,
+				BD0D12A31BC81ABE0001B488 /* TableViewController.swift in Sources */,
+				BD0D12A51BC81F630001B488 /* CollectionViewController.swift in Sources */,
+				BD0D12A91BC82A480001B488 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
