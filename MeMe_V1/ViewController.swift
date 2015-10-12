@@ -11,15 +11,18 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
+    //Outlets from view controller
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    //Access stored data in Appdelegate
     var memes: [Meme]!{
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         return appDelegate.memes
     }
+    var index: Int!
     
     //Dictionary for NSAttributedString to setup attributes of Text Fields
     let memeTextAttributes = [
@@ -55,12 +58,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         //Register for keyboard notifications
         registerForKeyboardNotification()
+        if index != nil {
+            imageView.image = memes[index].image
+            topTextField.text = memes[index].topText as String
+            bottomTextField.text = memes[index].bottomText as String
+        }
+        tabBarController?.tabBar.hidden = true
+        if imageView.image == nil {
+            navigationItem.leftBarButtonItem?.enabled = false
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         //De-register for keyboard notifications
         deregisterForKeyboardNotification()
+        tabBarController?.tabBar.hidden = false
+        navigationItem.leftBarButtonItem?.enabled = true
     }
     // Detects when a user touches the screen and tells the keyboard to disappear when that happens
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
@@ -68,13 +82,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textFieldDidEndEditing(topTextField)
         super.touchesBegan(touches, withEvent: event)
     }
-
     
     //Return to start state Cancel button is pressed in Meme Editor View
     @IBAction func cancelMeme(sender: UIBarButtonItem) {
-        imageView.image = nil
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+//        imageView.image = nil
+//        topTextField.text = "TOP"
+//        bottomTextField.text = "BOTTOM"
+        navigationController!.popToRootViewControllerAnimated(true)
     }
     //Album button action to present Alblum
     @IBAction func albumImage(sender: UIBarButtonItem) {
@@ -108,10 +122,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // Reference outlet for Tool Bar
     @IBOutlet weak var toolBar: UIToolbar!
     
-    //Reference outlet for Navigation Bar
-    @IBOutlet weak var navBar: UINavigationBar!
     
-    // Delegate function for UI Image picker controller to access the image
+    // Delegate function for UI Image picker controller to access the image and dismiss Image picker view controller
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         if (image != nil) {
             imageView.image = image
@@ -145,12 +157,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             topTextField.hidden = true
             view.frame.origin.y -= getKeyBoardHeight(notification)
         }
+        //Hide toolBar so that user can edit text on smaller screens
+        toolBar.hidden = true
     }
     
     //Function to adjust view once keyboard disappears
     func keyboardWillDisappear(notification:NSNotification) {
             topTextField.hidden = false
             view.frame.origin.y = 0
+        
+            //Un-hide toolBar so that user can edit text on smaller screens
+            toolBar.hidden = false
     }
     
     //Function to derive keyboard height from Userinfo in the UINSNotification
@@ -172,11 +189,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Generate meme
     func generateMeme() ->UIImage {
         
-        
         // Hide toolbar and navbar
         toolBar.hidden = true
-        navBar.hidden = true
-
+        navigationController!.navigationBarHidden = true
         // Render view to an image
         UIGraphicsBeginImageContext(view.frame.size)
         view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
@@ -185,8 +200,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //Show tool and nav bars
         toolBar.hidden = false
-        navBar.hidden = false
-    
+        navigationController!.navigationBarHidden = false
+
         return memedImage
     }
 

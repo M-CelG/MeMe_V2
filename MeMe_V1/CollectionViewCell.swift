@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    
+    //To present MeMed Image
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var bottomText: UILabel!
-    @IBOutlet weak var topText: UILabel!
+
 }

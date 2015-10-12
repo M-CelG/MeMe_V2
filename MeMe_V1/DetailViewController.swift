@@ -12,23 +12,31 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
+    //Array Index passed on from Table or collection View Controllers
     var index: Int!
+    //Access stored images in App Delegate
     var memes: [Meme]!{
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         return appDelegate.memes
     }
-    
+        
     override func viewWillAppear(animated: Bool) {
         imageView.image = memes[index].memedImage
+        //Hide tabBar
+        tabBarController?.tabBar.hidden = true
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        //Unhide tabBar
+        tabBarController?.tabBar.hidden = false
+    }
+    
+    //Use Edit button to edit MeMed Image using MeMe Editor View Controller
     @IBAction func editMeme(sender: AnyObject) {
         let memeViewController = storyboard!.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
-        memeViewController.topTextField.text = memes[index].topText as String
-        memeViewController.bottomTextField.text = memes[index].bottomText as String
-        memeViewController.imageView.image = memes[index].image
-        presentViewController(memeViewController, animated: true, completion: nil)
+        memeViewController.index = index
+        navigationController!.pushViewController(memeViewController, animated: true)
     }
     
 }
